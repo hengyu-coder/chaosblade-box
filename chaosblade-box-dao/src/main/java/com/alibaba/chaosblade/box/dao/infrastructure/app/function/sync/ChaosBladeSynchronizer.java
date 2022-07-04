@@ -14,6 +14,7 @@ import com.alibaba.chaosblade.box.dao.repository.SceneFunctionRepository;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -46,6 +47,9 @@ public class ChaosBladeSynchronizer extends BaseSceneSynchronizer {
     @Autowired
     private SceneFunctionCategoryManager sceneFunctionCategoryManager;
 
+    @Value("${chaos.sync.chaosblade.on-startup}")
+    private boolean startUp;
+
     @Override
     @DistributeLock(name = "chaosblade_scene_sync", lockAtLeastFor = "5m", lockAtMostFor = "10m",
         desc = "为了防止多台机器启动时候同步多次，增加一个锁来限制每次发布只有一台机器进行同步")
@@ -53,6 +57,9 @@ public class ChaosBladeSynchronizer extends BaseSceneSynchronizer {
         if (inited.compareAndSet(false, true)) {
             log.info("[ChaosBladeSynchronizer] Start to sync ChaosBlade models.");
             if (null == scene) {
+                return;
+            }
+            if(!startUp){
                 return;
             }
             List<SceneFunctionDO> functions = scene.getFunctions();
