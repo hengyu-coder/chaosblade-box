@@ -56,7 +56,7 @@ public class DefaultMetricMonitorStrategy implements MonitorStrategy, GuardExecu
 
     @Override
     public boolean support(ExperimentGuardResultLoadRequest guardResultLoadRequest) {
-        return true;
+        return false;
     }
 
     private ExperimentGuardMonitorMetricResultEntity requireExperimentGuardMonitorMetricResultEntity(
