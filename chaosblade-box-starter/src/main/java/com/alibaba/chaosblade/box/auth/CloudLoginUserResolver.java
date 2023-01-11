@@ -3,31 +3,18 @@ package com.alibaba.chaosblade.box.auth;
 import com.alibaba.chaosblade.box.common.common.domain.user.ChaosUser;
 import com.alibaba.chaosblade.box.common.common.enums.CommonErrorCode;
 import com.alibaba.chaosblade.box.common.common.util.EncryptUtil;
-import com.alibaba.chaosblade.box.common.infrastructure.exception.ChaosException;
 import com.alibaba.chaosblade.box.common.infrastructure.exception.PermissionDeniedException;
 import com.alibaba.chaosblade.box.service.UserService;
-
 import com.google.common.collect.ImmutableList;
 import lombok.extern.slf4j.Slf4j;
 import org.jasig.cas.client.authentication.AttributePrincipal;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author haibin

@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS chaosblade;
-USE chaosblade;
+CREATE DATABASE IF NOT EXISTS chaosblade-sit;
+USE chaosblade-sit;
 SET NAMES utf8mb4;
 
 CREATE TABLE IF NOT EXISTS  `t_chaos_blade_exp_uid` (
